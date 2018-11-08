@@ -15,7 +15,13 @@ $sql=" CREATE TABLE users(".
        "surname VARCHAR(100) NOT NULL,".
        "email VARCHAR(255) NOT NULL,".
        "PRIMARY KEY (email));";
-    
+$result = mysql_query( $sql, $con);
+if(! $result ) 
+{
+     die('Could not create table: ' . mysql_error());
+}
+ echo "Table created successfully\n";
+ mysql_close($con);
 
 
 
