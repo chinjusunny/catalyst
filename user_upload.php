@@ -10,7 +10,7 @@ if(! $con)
     die('Could not connect: ' . mysql_error());
 }
 
-$sql=" CREATE TABLE users(".
+$sql=" CREATE TABLE IF NOT EXISTS users(".
       "name VARCHAR(100) NOT NULL,".
        "surname VARCHAR(100) NOT NULL,".
        "email VARCHAR(255) NOT NULL,".
