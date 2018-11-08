@@ -20,18 +20,28 @@ if(! $result )
 {
      die('Could not create table: ' . mysql_error());
 }
- echo "Table created successfully\n";
+else
+{
+     echo "Table created successfully\n";
+}
 
 if (($handle = fopen("users.csv", "r")) !== FALSE) {
-  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-    $num = count($data);
-    for ($c=0; $c < $num; $c++)
-    {
-        echo $data[$c]."  ";
-    }
-echo "\n";
-  }
-  fclose($handle);
+        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                $num = count($data);
+                $d1=ucfirst(strtolower($data[0]));
+                $d2=ucfirst(strtolower($data[1]));
+                $d3=strtolower($data[2]);
+
+                if (!filter_var($d3, FILTER_VALIDATE_EMAIL))
+                {
+                        echo "Invalid email address\n";
+                }
+                else
+                {
+                        echo $d1."  ".$d2."  ".$d3."\n";
+                }
+        }
+fclose($handle);
 }
 
 
