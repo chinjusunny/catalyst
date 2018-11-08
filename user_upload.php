@@ -38,16 +38,14 @@ if (($handle = fopen("users.csv", "r")) !== FALSE) {
                 }
                 else
                 {
-                        echo $d1."  ".$d2."  ".$d3."\n";
+                    $import="INSERT into users(name,surname,email)values('$d1','$d1','$d3')";
+                    mysql_query($import) or die(mysql_error());
+                        //echo $d1."  ".$d2."  ".$d3."\n";
                 }
         }
 fclose($handle);
 }
 
-
-
- mysql_close($con);
-
-
-
+echo "Data Imported";
+mysql_close($con);
 ?>
