@@ -25,11 +25,13 @@ else
      echo "Table created successfully\n";
 }
 
+include "php-capitalize-names/function.php";
+
 if (($handle = fopen("users.csv", "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
                 $num = count($data);
-                $d1=ucfirst(strtolower($data[0]));
-                $d2=ucfirst(strtolower($data[1]));
+                $d1=capitalize($data[0]);
+                $d2=capitalize($data[1]);
                 $d3=strtolower($data[2]);
 
                 if (!filter_var($d3, FILTER_VALIDATE_EMAIL))
